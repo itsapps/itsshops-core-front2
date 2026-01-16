@@ -48,14 +48,14 @@ export const shopCoreFrontendPlugin = (eleventyConfig: any, options = {
     // eleventyConfig.addLayoutAlias(file.replace(".njk", ""), file);
   }
   const buildMode = 'normal'
-  console.log("fioaslkjf ölkj ölakjslk sf MUARG")
-  // const customerPagesRoot = path.join(eleventyConfig.directories.input, 'pages')
-  const projectRoot = process.cwd();
-  const customerPagesRoot = path.resolve(
-    projectRoot,
-    eleventyConfig.directories.input,
-    'pages'
-  );
+
+  const customerPagesRoot = path.join(eleventyConfig.directories.input, 'pages')
+  // const projectRoot = process.cwd();
+  // const customerPagesRoot = path.resolve(
+  //   projectRoot,
+  //   eleventyConfig.directories.input,
+  //   'pages'
+  // );
 
   console.log(`🔍 Checking for pages at: ${customerPagesRoot}`);
   if (fs.existsSync(customerPagesRoot)) {
