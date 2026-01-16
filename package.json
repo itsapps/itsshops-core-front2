@@ -1,0 +1,22 @@
+{
+  "name": "@itsapps/itsshops-core-front2",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./index.mts"
+  },
+  "bin": {
+    "itsshops": "./bin/itsshops.js"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "@sindresorhus/slugify": "^3.0.0",
+    "commander": "^14.0.2",
+    "nunjucks": "^3.2.4",
+    "tsx": "^4.21.0"
+  },
+  "devDependencies": {
+    "@types/nunjucks": "^3.2.6",
+    "typescript": "^5.9.3"
+  }
+}
