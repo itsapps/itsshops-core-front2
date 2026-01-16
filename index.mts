@@ -50,21 +50,23 @@ export const shopCoreFrontendPlugin = (eleventyConfig: any, options = {
   const buildMode = 'normal'
 
   const customerPagesRoot = path.join(eleventyConfig.directories.input, 'pages')
-  for (const dir of fs.readdirSync(customerPagesRoot)) {
-    const dirPath = path.join(customerPagesRoot, dir)
-    if (!fs.statSync(dirPath).isDirectory()) continue
+  if (fs.existsSync(customerPagesRoot)) {
+    for (const dir of fs.readdirSync(customerPagesRoot)) {
+      const dirPath = path.join(customerPagesRoot, dir)
+      if (!fs.statSync(dirPath).isDirectory()) continue
 
-    for (const file of fs.readdirSync(dirPath)) {
-      if (!file.endsWith('.njk')) continue
+      for (const file of fs.readdirSync(dirPath)) {
+        if (!file.endsWith('.njk')) continue
 
-      if (shouldIgnoreTemplate({
-        mode: buildMode,
-        previewType: "options.preview.documentType",
-        dir,
-        file,
-        features: {}
-      })) {
-        eleventyConfig.ignores.add(path.join(dirPath, file))
+        if (shouldIgnoreTemplate({
+          mode: buildMode,
+          previewType: "options.preview.documentType",
+          dir,
+          file,
+          features: {}
+        })) {
+          eleventyConfig.ignores.add(path.join(dirPath, file))
+        }
       }
     }
   }
