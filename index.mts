@@ -48,7 +48,7 @@ export const shopCoreFrontendPlugin = (eleventyConfig: any, options = {
     // eleventyConfig.addLayoutAlias(file.replace(".njk", ""), file);
   }
   const buildMode = 'normal'
-
+  console.log("fioaslkjf ölkj ölakjslk sf MUARG")
   // const customerPagesRoot = path.join(eleventyConfig.directories.input, 'pages')
   const projectRoot = process.cwd();
   const customerPagesRoot = path.resolve(
