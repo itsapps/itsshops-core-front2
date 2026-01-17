@@ -27,7 +27,7 @@ export async function syncNetlifyConfig() {
     "node_modules/@sindresorhus/**",
     // "node_modules/@itsapps/**",
     // "node_modules/@itsapps/itsshops-core-front2/netlify/**"
-    "node_modules/@itsapps/itsshops-core-front2/_config/**",
+    "node_modules/@itsapps/itsshops-core-front2/**",
   ]);
 
   userConfig.external?.forEach(mod => externalModules.add(mod));
