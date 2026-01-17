@@ -1,6 +1,9 @@
 import type { Context, Config } from "@netlify/functions";
 // @ts-ignore - Importing Eleventy which might lack types
 import Eleventy from '@11ty/eleventy'
+import { pathToFileURL } from 'url';
+import path from 'path';
+import * as fs from 'fs';
 
 // import slugifyString from '@sindresorhus/slugify';
 
@@ -18,10 +21,13 @@ export const config: Config = {
 
 export default async function (): Promise<Response> {
   let result = "bla"
+  const root = process.cwd();
   const inputDir = "./src";
+  const absoluteConfigPath = path.join(root, "eleventy.config.mts");
+  console.log("absoluteConfigPath", absoluteConfigPath);
   try {
-    const elev = new Eleventy(inputDir, undefined, {
-      configPath: "eleventy.config.mts",
+    const elev = new Eleventy(path.join(root, "src"), undefined, {
+      configPath: absoluteConfigPath,
       quietMode: true
     });
 
