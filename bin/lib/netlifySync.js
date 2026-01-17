@@ -31,15 +31,26 @@ export async function syncNetlifyConfig() {
       dev: {
         autoLaunch: false,
       },
-      functions: {
-        preview: {
-          node_bundler: "esbuild",
-          external_node_modules: Array.from(externalModules),
-          included_files: Array.from(includedFiles)
-        }
-      }
+      // functions: {
+      //   "preview": {
+      //     node_bundler: "esbuild",
+      //     external_node_modules: Array.from(externalModules),
+      //     included_files: Array.from(includedFiles)
+      //   }
+      // }
     };
-    return TOML.stringify(configObject);
+    // return TOML.stringify(configObject);
+    const baseToml = TOML.stringify(configObject);
+    // Manually construct the quoted functions block to ensure [functions."preview"]
+    // and consistent array formatting.
+    const functionsToml = `
+[functions."preview"]
+  node_bundler = "esbuild"
+  external_node_modules = ${JSON.stringify(Array.from(externalModules))}
+  included_files = ${JSON.stringify(Array.from(includedFiles))}
+`;
+
+    return `${baseToml}${functionsToml}`;
   }
 
   await fs.writeFile('netlify.toml', generateToml());
