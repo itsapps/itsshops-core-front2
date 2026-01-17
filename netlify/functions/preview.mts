@@ -13,7 +13,7 @@ interface ElevResult {
 //   path: "/preview"
 // };
 
-export default async (): Promise<string> => {
+export default async (text: string): Promise<string> => {
   let result = "bla"
   const inputDir = "./src";
   try {
@@ -32,7 +32,7 @@ export default async (): Promise<string> => {
       result = error.message
     }
   }
-  return result
+  return result + text
   // return new Response(result, {
   //   headers: {
   //     "content-type": "text/html",
