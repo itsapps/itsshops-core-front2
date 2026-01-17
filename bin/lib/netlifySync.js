@@ -23,7 +23,7 @@ export async function syncNetlifyConfig() {
     "eleventy.config.mts",
     "src/**",
     "shared/**",
-    "tsconfig.json",
+    // "tsconfig.json",
     "node_modules/@sindresorhus/**",
     // "node_modules/@itsapps/**",
     // "node_modules/@itsapps/itsshops-core-front2/netlify/**"
