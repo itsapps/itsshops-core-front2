@@ -24,6 +24,7 @@
   },
   "scripts": {
     "build": "tsup index.mts --format esm --dts --clean --target node20",
+    "buildfsdf": "tsup index.mts --format esm --dts --clean --no-external",
     "blabal": "tsup index.mts --format esm --dts --clean"
   },
   "dependencies": {
