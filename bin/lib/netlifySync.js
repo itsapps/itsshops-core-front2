@@ -22,6 +22,7 @@ export async function syncNetlifyConfig() {
     "@itsapps/itsshops-core-front2",
     "@11ty/eleventy",
     "@sindresorhus/slugify",
+    "dayjs",
   ]);
   const includedFiles = new Set([
     "eleventy.config.mts",
@@ -34,7 +35,8 @@ export async function syncNetlifyConfig() {
     // "node_modules/@itsapps/itsshops-core-front2/netlify/**"
     // "node_modules/@itsapps/itsshops-core-front2/**",
     "node_modules/@itsapps/itsshops-core-front2/templates/**",
-    "node_modules/@itsapps/itsshops-core-front2/dist/**"
+    "node_modules/@itsapps/itsshops-core-front2/dist/**",
+    "node_modules/dayjs/**",
   ]);
 
   userConfig.external?.forEach(mod => externalModules.add(mod));
