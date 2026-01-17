@@ -1,6 +1,12 @@
-import fs from "fs"
-import path from "path"
-import Nunjucks from "nunjucks"
+import * as fs from 'fs';          // Fixes TS1192
+import * as path from 'path';      // Fixes TS1259
+import Nunjucks from 'nunjucks';   // (Or import * as nunjucks from 'nunjucks' if it still complains)
+
+// For local imports (TS5097):
+// In modern TS, you should import the '.mjs' or '.js' equivalent, 
+// or remove the extension entirely if you aren't using "allowImportingTsExtensions"
+// import { someUtil } from './utils';
+
 import { fileURLToPath } from "url"
 // import {
 //   EleventyRenderPlugin,

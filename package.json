@@ -5,9 +5,11 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./index.mts",
-    "./functions/*": "./netlify/functions/*.mts",
-    "./utils/*": "./netlify/utils/*.mts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./functions/*": "./netlify/functions/*.mts"
   },
   "files": [
     "dist",
@@ -19,6 +21,9 @@
   ],
   "bin": {
     "itsshops": "./bin/itsshops.js"
+  },
+  "scripts": {
+    "build": "tsup index.mts --format esm --dts --clean --target node20"
   },
   "dependencies": {
     "@11ty/eleventy": "^3.1.2",
