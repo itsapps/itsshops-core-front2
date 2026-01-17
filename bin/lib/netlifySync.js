@@ -24,6 +24,7 @@ export async function syncNetlifyConfig() {
     // "@sindresorhus/slugify",
   ]);
   const includedFiles = new Set([
+    "package.json",
     "eleventy.config.mts",
     "src/**",
     "shared/**",
