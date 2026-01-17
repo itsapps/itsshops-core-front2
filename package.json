@@ -39,7 +39,6 @@
   },
   "devDependencies": {
     "@types/nunjucks": "^3.2.6",
-    "dayjs": "^1.11.19",
     "tsup": "^8.5.1",
     "typescript": "^5.9.3"
   }
