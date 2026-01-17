@@ -27,11 +27,14 @@ export async function syncNetlifyConfig() {
     "eleventy.config.mts",
     "src/**",
     "shared/**",
+    "templates/**",
     // "tsconfig.json",
     "node_modules/@sindresorhus/**",
     // "node_modules/@itsapps/**",
     // "node_modules/@itsapps/itsshops-core-front2/netlify/**"
     // "node_modules/@itsapps/itsshops-core-front2/**",
+    "node_modules/@itsapps/itsshops-core-front2/templates/**",
+    "node_modules/@itsapps/itsshops-core-front2/dist/**"
   ]);
 
   userConfig.external?.forEach(mod => externalModules.add(mod));
