@@ -12,6 +12,7 @@
     "_config/",
     "bin/",
     "netlify/",
+    "shit/",
     "templates/"
   ],
   "bin": {
