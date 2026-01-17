@@ -27,6 +27,7 @@ export async function syncNetlifyConfig() {
     "package.json",
     "eleventy.config.mts",
     "src/**",
+    "src/**/*",
     "shared/**",
     "templates/**",
     // "tsconfig.json",
