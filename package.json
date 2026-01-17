@@ -4,7 +4,8 @@
   "type": "module",
   "exports": {
     ".": "./index.mts",
-    "./functions/*": "./netlify/functions/*.mts"
+    "./functions/*": "./netlify/functions/*.mts",
+    "./utils/*": "./netlify/utils/*.mts"
   },
   "files": [
     "index.mts",
