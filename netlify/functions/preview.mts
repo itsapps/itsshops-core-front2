@@ -12,6 +12,9 @@
 // export const coreConfig = {
 //   path: "/preview"
 // };
+export const config: Config = {
+  path: "/preview" 
+};
 
 export default async function (): Promise<string> {
   // let result = "bla"
