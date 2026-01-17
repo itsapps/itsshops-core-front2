@@ -7,6 +7,13 @@
     "./functions/*": "./netlify/functions/*.mts",
     "./utils/*": "./netlify/utils/*.mts"
   },
+  "files": [
+    "index.mts",
+    "_config/",
+    "bin/",
+    "netlify/",
+    "templates/"
+  ],
   "bin": {
     "itsshops": "./bin/itsshops.js"
   },
