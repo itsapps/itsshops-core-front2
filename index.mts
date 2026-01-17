@@ -17,7 +17,8 @@ import { someFilter } from './_config/filters.mts';
 // Convert current module URL to a directory path
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
-const coreRoot = path.resolve(__dirname)
+
+const coreRoot = path.resolve(__dirname,  '..')
 // const assetsRoot = path.join(coreRoot, "assets")
 const templatesRoot = path.join(coreRoot, "templates")
 
