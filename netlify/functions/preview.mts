@@ -9,11 +9,11 @@ interface ElevResult {
   content: string;
 }
 
-export const coreConfig = {
-  path: "/preview"
-};
+// export const coreConfig = {
+//   path: "/preview"
+// };
 
-export async function coreHandler (request: Request, context: any): Promise<string> {
+export const coreHandler = async (): Promise<string> => {
   let result = "bla"
   const inputDir = "./src";
   try {
