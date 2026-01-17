@@ -4,8 +4,8 @@
   "type": "module",
   "main": "./index.mts",
   "files": [
-    "index.mts",
-    "netlify/functions/preview.mts"
+    "./index.mts",
+    "./netlify/functions/preview.mts"
   ],
   "exports": {
     ".": "./index.mts",
