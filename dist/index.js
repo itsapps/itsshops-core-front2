@@ -13,7 +13,7 @@ function someFilter(value) {
 // index.mts
 var __filename = fileURLToPath(import.meta.url);
 var __dirname = path.dirname(__filename);
-var coreRoot = path.resolve(__dirname);
+var coreRoot = path.resolve(__dirname, "..");
 var templatesRoot = path.join(coreRoot, "templates");
 var shopCoreFrontendPlugin = (eleventyConfig, options = {}) => {
   let nunjucksEnvironment = new Nunjucks.Environment(
