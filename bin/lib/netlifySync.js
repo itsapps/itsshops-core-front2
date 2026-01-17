@@ -27,10 +27,9 @@ export async function syncNetlifyConfig() {
     "package.json",
     "eleventy.config.mts",
     "src/**",
-    "src/**/*",
     "shared/**",
     "templates/**",
-    // "tsconfig.json",
+    "tsconfig.json",
     // "node_modules/@sindresorhus/**",
     // "node_modules/@itsapps/**",
     // "node_modules/@itsapps/itsshops-core-front2/netlify/**"
