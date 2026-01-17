@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "type": "module",
   "main": "./index.mts",
+  "files": [
+    "index.mts",
+    "netlify/functions/preview.mts"
+  ],
   "exports": {
     ".": "./index.mts",
     "./functions/*": "./netlify/functions/*.mts"
