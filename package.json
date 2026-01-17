@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "type": "module",
   "exports": {
-    ".": "./index.mts"
+    ".": "./index.mts",
+    "./functions/*": "./netlify/functions/*.mts"
   },
   "bin": {
-    "itsshops": "./bin/itsshops.js",
-    "./functions/*": "./netlify/functions/*.mts"
+    "itsshops": "./bin/itsshops.js"
   },
   "dependencies": {
     "@11ty/eleventy": "^3.1.2",
