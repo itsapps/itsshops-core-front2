@@ -13,7 +13,7 @@ interface ElevResult {
 //   path: "/preview"
 // };
 
-export const coreHandler = async (text: string): Promise<string> => {
+export const coreHandler = async (callback: () => string): Promise<string> => {
   let result = "bla"
   const inputDir = "./src";
   try {
@@ -32,7 +32,7 @@ export const coreHandler = async (text: string): Promise<string> => {
       result = error.message
     }
   }
-  return result
+  return result + callback();
   // return new Response(result, {
   //   headers: {
   //     "content-type": "text/html",
