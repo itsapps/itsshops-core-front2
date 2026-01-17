@@ -1,3 +1,3 @@
-export function getShit() {
+export const getShit = () => {
   return "bla"
 }
