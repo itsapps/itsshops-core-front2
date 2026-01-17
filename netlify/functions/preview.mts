@@ -1,6 +1,6 @@
 // import type { Context, Config } from "@netlify/functions";
 // @ts-ignore - Importing Eleventy which might lack types
-import Eleventy from '@11ty/eleventy'
+
 
 // import slugifyString from '@sindresorhus/slugify';
 
@@ -13,7 +13,7 @@ interface ElevResult {
 //   path: "/preview"
 // };
 
-export const coreHandler = async (callback: () => string): Promise<string> => {
+export const coreHandler = async (Eleventy: any): Promise<string> => {
   let result = "bla"
   const inputDir = "./src";
   try {
@@ -32,7 +32,7 @@ export const coreHandler = async (callback: () => string): Promise<string> => {
       result = error.message
     }
   }
-  return result + callback();
+  return result
   // return new Response(result, {
   //   headers: {
   //     "content-type": "text/html",
