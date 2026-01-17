@@ -1,4 +1,4 @@
-import type { Context, Config } from "@netlify/functions";
+// import type { Context, Config } from "@netlify/functions";
 // @ts-ignore - Importing Eleventy which might lack types
 import Eleventy from '@11ty/eleventy'
 
@@ -9,11 +9,11 @@ interface ElevResult {
   content: string;
 }
 
-export const defaultConfig: Config = {
+export const defaultConfig = {
   path: "/preview"
 };
 
-export async function coreHandler (request: Request, context: Context) {
+export async function coreHandler (request: Request, context: any) {
   let result = "bla"
   const inputDir = "./src";
   try {
