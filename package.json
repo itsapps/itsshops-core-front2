@@ -23,7 +23,8 @@
     "itsshops": "./bin/itsshops.js"
   },
   "scripts": {
-    "build": "tsup index.mts --format esm --dts --clean --target node20",
+    "blabal": "tsup index.mts --format esm --dts --clean --target node20",
+    "build": "tsup index.mts --format esm --dts --clean",
     "prepare": "npm run build"
   },
   "dependencies": {
