@@ -9,11 +9,10 @@
   },
   "files": [
     "index.mts",
+    "_config/",
     "bin/",
     "netlify/",
-    "_config/",
-    "lib/",
-    "shared/"
+    "templates/"
   ],
   "bin": {
     "itsshops": "./bin/itsshops.js"
