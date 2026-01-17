@@ -7,6 +7,14 @@
     ".": "./index.mts",
     "./functions/*": "./netlify/functions/*.mts"
   },
+  "files": [
+    "index.mts",
+    "bin/",
+    "netlify/",
+    "_config/",
+    "lib/",
+    "shared/"
+  ],
   "bin": {
     "itsshops": "./bin/itsshops.js"
   },
