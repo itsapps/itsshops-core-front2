@@ -42,12 +42,18 @@ export default async function (): Promise<Response> {
     console.log("Diagnostic failed:", err.message);
   }
   console.log("--- DEBUG END ---");
-  
-  const inputDir = "./src";
+
+  // const inputDir = "./src";
+  const inputDir = path.join(root, "src");
+  console.log("Checking for input directory at:", inputDir);
+  if (!fs.existsSync(inputDir)) {
+    console.error("INPUT DIRECTORY MISSING!");
+    // This helps you see if it's a path issue or a missing file issue
+  }
   const absoluteConfigPath = path.join(root, "eleventy.config.mts");
   console.log("absoluteConfigPath", absoluteConfigPath);
   try {
-    const elev = new Eleventy(path.join(root, "src"), undefined, {
+    const elev = new Eleventy(inputDir, undefined, {
       configPath: absoluteConfigPath,
       quietMode: true
     });
