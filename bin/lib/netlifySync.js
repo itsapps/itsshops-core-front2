@@ -21,7 +21,7 @@ export async function syncNetlifyConfig() {
   const externalModules = new Set([
     "@itsapps/itsshops-core-front2",
     "@11ty/eleventy",
-    "@sindresorhus/slugify",
+    // "@sindresorhus/slugify",
   ]);
   const includedFiles = new Set([
     "eleventy.config.mts",
@@ -29,7 +29,7 @@ export async function syncNetlifyConfig() {
     "shared/**",
     "templates/**",
     // "tsconfig.json",
-    "node_modules/@sindresorhus/**",
+    // "node_modules/@sindresorhus/**",
     // "node_modules/@itsapps/**",
     // "node_modules/@itsapps/itsshops-core-front2/netlify/**"
     // "node_modules/@itsapps/itsshops-core-front2/**",
