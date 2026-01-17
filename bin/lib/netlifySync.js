@@ -19,8 +19,8 @@ export async function syncNetlifyConfig() {
   //   "node_modules/@sindresorhus/**",
   // ]);
   const externalModules = new Set([
-    "@itsapps/itsshops-core-front2",
-    "@11ty/eleventy",
+    // "@itsapps/itsshops-core-front2",
+    // "@11ty/eleventy",
     // "@sindresorhus/slugify",
   ]);
   const includedFiles = new Set([
