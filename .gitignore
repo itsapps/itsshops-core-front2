@@ -9,6 +9,8 @@ Thumbs.db
 .cache
 _cache/
 
+# netlify.toml is automatically generated before build
+netlify.toml
 # Local Netlify folder
 .netlify
 

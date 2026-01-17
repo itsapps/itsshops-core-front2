@@ -3,6 +3,7 @@ import { Command } from 'commander';
 import { spawn } from 'child_process';
 import path from 'path';
 import fs from 'fs';
+import { syncNetlifyConfig } from './lib/netlifySync.js';
 
 const program = new Command();
 
@@ -14,6 +15,9 @@ program
 program
   .command('serve')
   .description('🚀 Start the development server')
+  .hook('preAction', async () => {
+    await syncNetlifyConfig();
+  })
   .option('-e, --env <path>', 'Path to environment file', '.env')
   .option('--no-serve', 'Do not start the local server')
   .option('--watch', 'Do not watch for file changes')
@@ -66,6 +70,9 @@ program
 
 program
   .command('build')
+  .hook('preAction', async () => {
+    await syncNetlifyConfig();
+  })
   .description('🏗️  Build the static site for production')
   .option('-e, --env <path>', 'Path to environment file')
   .action((options) => {
