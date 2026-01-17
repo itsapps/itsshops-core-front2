@@ -18,7 +18,14 @@ import { someFilter } from './_config/filters.mts';
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const coreRoot = path.resolve(__dirname,  '..')
+const getPackageRoot = () => {
+  // If we are in 'dist', go up one. If bundled/inlined, we might need a fallback.
+  return __dirname.includes('dist') 
+    ? path.resolve(__dirname, '..') 
+    : path.resolve(__dirname);
+};
+// const coreRoot = path.resolve(__dirname,  '..')
+const coreRoot = getPackageRoot()
 // const assetsRoot = path.join(coreRoot, "assets")
 const templatesRoot = path.join(coreRoot, "templates")
 
