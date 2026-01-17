@@ -13,7 +13,7 @@
 //   path: "/preview"
 // };
 
-export const coreHandler = async (): Promise<string> => {
+export default async function (): Promise<string> {
   // let result = "bla"
   // const inputDir = "./src";
   // try {
