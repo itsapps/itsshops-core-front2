@@ -18,6 +18,7 @@ var getPackageRoot = () => {
 };
 var coreRoot = getPackageRoot();
 var templatesRoot = path.join(coreRoot, "templates");
+var layoutsDir = path.join(templatesRoot, "layouts");
 var shopCoreFrontendPlugin = (eleventyConfig, options = {}) => {
   let nunjucksEnvironment = new Nunjucks.Environment(
     new Nunjucks.FileSystemLoader([
@@ -29,16 +30,19 @@ var shopCoreFrontendPlugin = (eleventyConfig, options = {}) => {
   eleventyConfig.setNunjucksEnvironmentOptions({
     throwOnUndefined: true
   });
-  const layoutsDir = path.join(templatesRoot, "layouts");
-  for (const file of fs.readdirSync(layoutsDir)) {
-    if (!file.endsWith(".njk")) continue;
-    const customerLayoutPath = path.join(process.cwd(), eleventyConfig.directories.layouts, file);
-    if (fs.existsSync(customerLayoutPath)) {
-      continue;
+  if (fs.existsSync(layoutsDir)) {
+    for (const file of fs.readdirSync(layoutsDir)) {
+      if (!file.endsWith(".njk")) continue;
+      const customerLayoutPath = path.join(process.cwd(), eleventyConfig.directories.layouts, file);
+      if (fs.existsSync(customerLayoutPath)) {
+        continue;
+      }
+      const content = fs.readFileSync(path.join(layoutsDir, file), "utf-8");
+      let layoutPath = eleventyConfig.directories.getLayoutPathRelativeToInputDirectory(file);
+      eleventyConfig.addTemplate(layoutPath, content);
     }
-    const content = fs.readFileSync(path.join(layoutsDir, file), "utf-8");
-    let layoutPath = eleventyConfig.directories.getLayoutPathRelativeToInputDirectory(file);
-    eleventyConfig.addTemplate(layoutPath, content);
+  } else {
+    console.warn(`No layouts found at: ${layoutsDir}`);
   }
   const buildMode = "normal";
   const customerPagesRoot = path.join(eleventyConfig.directories.input, "pages");
@@ -106,6 +110,12 @@ function shouldIgnoreTemplate({
   if (dir === "maintenance") return true;
   return false;
 }
+var hello = (text) => {
+  return new Response(text, {
+    headers: { "content-type": "text/html" }
+  });
+};
 export {
+  hello,
   shopCoreFrontendPlugin
 };

@@ -28,6 +28,7 @@ const getPackageRoot = () => {
 const coreRoot = getPackageRoot()
 // const assetsRoot = path.join(coreRoot, "assets")
 const templatesRoot = path.join(coreRoot, "templates")
+const layoutsDir = path.join(templatesRoot, "layouts")
 
 export const shopCoreFrontendPlugin = (eleventyConfig: any, options = {
   
@@ -48,18 +49,21 @@ export const shopCoreFrontendPlugin = (eleventyConfig: any, options = {
   
 
   // layouts
-  const layoutsDir = path.join(templatesRoot, "layouts")
-  for (const file of fs.readdirSync(layoutsDir)) {
-    if (!file.endsWith(".njk")) continue
-    const customerLayoutPath = path.join(process.cwd(), eleventyConfig.directories.layouts, file)
-    if (fs.existsSync(customerLayoutPath)) {
-      continue // layout exists, so use this one instead of the one from core
-    }
+  if (fs.existsSync(layoutsDir)) {
+    for (const file of fs.readdirSync(layoutsDir)) {
+      if (!file.endsWith(".njk")) continue
+      const customerLayoutPath = path.join(process.cwd(), eleventyConfig.directories.layouts, file)
+      if (fs.existsSync(customerLayoutPath)) {
+        continue // layout exists, so use this one instead of the one from core
+      }
 
-    const content = fs.readFileSync(path.join(layoutsDir, file), "utf-8")
-    let layoutPath = eleventyConfig.directories.getLayoutPathRelativeToInputDirectory(file);
-    eleventyConfig.addTemplate(layoutPath, content)
-    // eleventyConfig.addLayoutAlias(file.replace(".njk", ""), file);
+      const content = fs.readFileSync(path.join(layoutsDir, file), "utf-8")
+      let layoutPath = eleventyConfig.directories.getLayoutPathRelativeToInputDirectory(file);
+      eleventyConfig.addTemplate(layoutPath, content)
+      // eleventyConfig.addLayoutAlias(file.replace(".njk", ""), file);
+    }
+  } else {
+    console.warn(`No layouts found at: ${layoutsDir}`)
   }
   const buildMode = 'normal'
 
@@ -163,3 +167,9 @@ function shouldIgnoreTemplate({
 
   return false
 }
+
+export const hello = (text: string) => {
+  return new Response(text, {
+    headers: { "content-type": "text/html" }
+  });
+};
