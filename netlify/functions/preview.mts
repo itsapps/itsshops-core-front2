@@ -32,10 +32,10 @@ export async function coreHandler (request: Request, context: any) {
       result = error.message
     }
   }
-
-  return new Response(result, {
-    headers: {
-      "content-type": "text/html",
-    }
-  });
+  return result
+  // return new Response(result, {
+  //   headers: {
+  //     "content-type": "text/html",
+  //   }
+  // });
 };
