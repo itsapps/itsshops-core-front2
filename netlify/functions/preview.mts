@@ -13,7 +13,7 @@ interface ElevResult {
 //   path: "/preview"
 // };
 
-export default async (text: string): Promise<string> => {
+export const coreHandler = async (text: string): Promise<string> => {
   let result = "bla"
   const inputDir = "./src";
   try {
