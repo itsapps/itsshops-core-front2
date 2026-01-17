@@ -5,7 +5,7 @@
   "main": "./index.mts",
   "exports": {
     ".": "./index.mts",
-    "./functions/preview": "./netlify/functions/preview.mts"
+    "./functions/*": "./netlify/functions/*.mts"
   },
   "bin": {
     "itsshops": "./bin/itsshops.js"
