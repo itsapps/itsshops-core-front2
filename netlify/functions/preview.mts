@@ -13,7 +13,7 @@ export const defaultConfig: Config = {
   path: "/preview"
 };
 
-export async function handler (request: Request, context: Context) {
+export async function coreHandler (request: Request, context: Context) {
   let result = "bla"
   const inputDir = "./src";
   try {
