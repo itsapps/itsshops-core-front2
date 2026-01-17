@@ -25,7 +25,8 @@ export async function syncNetlifyConfig() {
     "shared/**",
     "tsconfig.json",
     "node_modules/@sindresorhus/**",
-    "node_modules/@itsapps/**"
+    "node_modules/@itsapps/**",
+    "node_modules/@itsapps/itsshops-core-front2/netlify/**"
   ]);
 
   userConfig.external?.forEach(mod => externalModules.add(mod));
