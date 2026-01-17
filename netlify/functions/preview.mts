@@ -9,7 +9,7 @@ interface ElevResult {
   content: string;
 }
 
-export const defaultConfig = {
+export const coreConfig = {
   path: "/preview"
 };
 
