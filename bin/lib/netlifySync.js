@@ -4,7 +4,7 @@ import * as TOML from '@iarna/toml';
 
 export async function syncNetlifyConfig() {
   const root = process.cwd();
-  const tomlPath = path.join(root, 'netlify.toml');
+  const tomlPath = path.join(root, 'customer-netlify.toml');
 
   // These are the "Non-negotiable" settings for your framework
   const frameworkSettings = {
