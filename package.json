@@ -4,7 +4,7 @@
   "type": "module",
   "exports": {
     ".": "./index.mts",
-    "./functions/*": "./netlify/functions/*.mts"
+    "./functions/preview": "./netlify/functions/preview.mts"
   },
   "bin": {
     "itsshops": "./bin/itsshops.js"
