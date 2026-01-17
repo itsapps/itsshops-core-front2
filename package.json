@@ -2,15 +2,17 @@
   "name": "@itsapps/itsshops-core-front2",
   "version": "1.0.0",
   "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": "./index.mts",
     "./functions/*": "./netlify/functions/*.mts",
     "./utils/*": "./netlify/utils/*.mts"
   },
   "files": [
-    "index.mts",
-    "_config/",
+    "dist",
     "bin/",
+    "_config/",
     "netlify/",
     "shit/",
     "templates/"
@@ -30,6 +32,7 @@
   },
   "devDependencies": {
     "@types/nunjucks": "^3.2.6",
+    "tsup": "^8.5.1",
     "typescript": "^5.9.3"
   }
 }

@@ -18,7 +18,11 @@ export async function syncNetlifyConfig() {
   //   "tsconfig.json",
   //   "node_modules/@sindresorhus/**",
   // ]);
-  const externalModules = new Set(["@sindresorhus/slugify"]);
+  const externalModules = new Set([
+    "@itsapps/itsshops-core-front2",
+    "@11ty/eleventy",
+    "@sindresorhus/slugify",
+  ]);
   const includedFiles = new Set([
     "eleventy.config.mts",
     "src/**",
@@ -27,7 +31,7 @@ export async function syncNetlifyConfig() {
     "node_modules/@sindresorhus/**",
     // "node_modules/@itsapps/**",
     // "node_modules/@itsapps/itsshops-core-front2/netlify/**"
-    "node_modules/@itsapps/itsshops-core-front2/**",
+    // "node_modules/@itsapps/itsshops-core-front2/**",
   ]);
 
   userConfig.external?.forEach(mod => externalModules.add(mod));
