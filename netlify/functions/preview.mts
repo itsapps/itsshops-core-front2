@@ -13,7 +13,7 @@ export const coreConfig = {
   path: "/preview"
 };
 
-export async function coreHandler (request: Request, context: any) {
+export async function coreHandler (request: Request, context: any): Promise<string> {
   let result = "bla"
   const inputDir = "./src";
   try {
