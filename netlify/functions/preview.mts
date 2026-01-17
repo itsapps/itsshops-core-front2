@@ -32,7 +32,7 @@ export const coreHandler = async (text: string): Promise<string> => {
       result = error.message
     }
   }
-  return result + text
+  return result
   // return new Response(result, {
   //   headers: {
   //     "content-type": "text/html",
