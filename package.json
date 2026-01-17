@@ -2,6 +2,7 @@
   "name": "@itsapps/itsshops-core-front2",
   "version": "1.0.0",
   "type": "module",
+  "main": "./index.mts",
   "exports": {
     ".": "./index.mts",
     "./functions/preview": "./netlify/functions/preview.mts"
