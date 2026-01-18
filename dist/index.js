@@ -6,9 +6,8 @@ import { fileURLToPath } from "url";
 
 // _config/filters.mts
 import slugifyString from "@sindresorhus/slugify";
-import dayjs from "dayjs";
 function someFilter(value) {
-  return `filtered value: ${slugifyString(value)}---${dayjs(/* @__PURE__ */ new Date()).toISOString()}`;
+  return `filtered value: ${slugifyString(value)}`;
 }
 
 // index.mts
