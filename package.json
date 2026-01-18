@@ -9,10 +9,6 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
-    "./functions/hello": {
-      "types": "./dist/hello.d.ts",
-      "import": "./dist/hello.js"
-    },
     "./functions/preview": {
       "types": "./dist/preview.d.ts",
       "import": "./dist/preview.js"

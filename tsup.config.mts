@@ -3,6 +3,7 @@ import { defineConfig } from 'tsup';
 export default defineConfig({
   entry: {
     index: 'index.mts',
+    preview: 'netlify/functions/preview.mts',
     preview2: 'netlify/functions/preview2.mts',
   },
   format: ['esm'],
