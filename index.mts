@@ -12,7 +12,7 @@ import { fileURLToPath } from "url"
 //   EleventyRenderPlugin,
 //   EleventyI18nPlugin,
 // } from '@11ty/eleventy';
-import { someFilter } from './_config/filters.mts';
+import { someFilter } from './config/filters.mts';
 
 // Convert current module URL to a directory path
 const __filename = fileURLToPath(import.meta.url)
@@ -167,9 +167,3 @@ function shouldIgnoreTemplate({
 
   return false
 }
-
-export const hello = (text: string) => {
-  return new Response(text, {
-    headers: { "content-type": "text/html" }
-  });
-};

@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "es2020",          // Fixes TS1343 (import.meta)
+    "module": "es2020",
     "moduleResolution": "Bundler",
     "lib": ["ESNext", "DOM"],
     "declaration": true,

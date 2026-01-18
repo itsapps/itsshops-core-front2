@@ -4,7 +4,7 @@ import * as path from "path";
 import Nunjucks from "nunjucks";
 import { fileURLToPath } from "url";
 
-// _config/filters.mts
+// config/filters.mts
 import slugifyString from "@sindresorhus/slugify";
 function someFilter(value) {
   return `filtered value: ${slugifyString(value)}`;
@@ -110,12 +110,6 @@ function shouldIgnoreTemplate({
   if (dir === "maintenance") return true;
   return false;
 }
-var hello = (text) => {
-  return new Response(text, {
-    headers: { "content-type": "text/html" }
-  });
-};
 export {
-  hello,
   shopCoreFrontendPlugin
 };

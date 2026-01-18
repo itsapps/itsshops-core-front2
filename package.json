@@ -9,17 +9,22 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
+    "./functions/hello": {
+      "types": "./dist/hello.d.ts",
+      "import": "./dist/hello.js"
+    },
+    "./functions/preview": {
+      "types": "./dist/preview.d.ts",
+      "import": "./dist/preview.js"
+    },
     "./functions/preview2": {
       "types": "./dist/preview2.d.ts",
       "import": "./dist/preview2.js"
     }
   },
   "files": [
-    "dist",
-    "bin/",
-    "_config/",
-    "netlify/",
-    "shit/",
+    "assets/",
+    "config/",
     "templates/"
   ],
   "bin": {
@@ -27,8 +32,6 @@
   },
   "scripts": {
     "build": "tsup",
-    "buildfsdf": "tsup index.mts --format esm --dts --clean --no-external",
-    "blabal": "tsup index.mts --format esm --dts --clean",
     "kjhprepare": "npm run build"
   },
   "simple-git-hooks": {
