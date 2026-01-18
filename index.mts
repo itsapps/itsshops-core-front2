@@ -63,7 +63,7 @@ export const shopCoreFrontendPlugin = (eleventyConfig: any, options = {
       // eleventyConfig.addLayoutAlias(file.replace(".njk", ""), file);
     }
   } else {
-    console.warn(`No layouts found at: ${layoutsDir}`)
+    console.warn(`No layouts found  at: ${layoutsDir}`)
   }
   const buildMode = 'normal'
 

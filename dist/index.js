@@ -42,7 +42,7 @@ var shopCoreFrontendPlugin = (eleventyConfig, options = {}) => {
       eleventyConfig.addTemplate(layoutPath, content);
     }
   } else {
-    console.warn(`No layouts found at: ${layoutsDir}`);
+    console.warn(`No layouts found  at: ${layoutsDir}`);
   }
   const buildMode = "normal";
   const customerPagesRoot = path.join(eleventyConfig.directories.input, "pages");
