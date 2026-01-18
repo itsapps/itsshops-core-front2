@@ -32,7 +32,7 @@
     "kjhprepare": "npm run build"
   },
   "simple-git-hooks": {
-		"pre-commit": "npm run build"
+		"pre-commit": "npm run build && git add dist"
 	},
   "dependencies": {
     "@11ty/eleventy": "^3.1.2",
