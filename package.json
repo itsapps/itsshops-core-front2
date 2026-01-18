@@ -29,8 +29,11 @@
     "build": "tsup",
     "buildfsdf": "tsup index.mts --format esm --dts --clean --no-external",
     "blabal": "tsup index.mts --format esm --dts --clean",
-    "prepare": "npm run build"
+    "kjhprepare": "npm run build"
   },
+  "simple-git-hooks": {
+		"pre-commit": "npm run build"
+	},
   "dependencies": {
     "@11ty/eleventy": "^3.1.2",
     "@iarna/toml": "^2.2.5",
@@ -44,6 +47,7 @@
   "devDependencies": {
     "@types/node": "^25.0.9",
     "@types/nunjucks": "^3.2.6",
+    "simple-git-hooks": "^2.13.1",
     "tsup": "^8.5.1",
     "typescript": "^5.9.3"
   }
