@@ -8,7 +8,7 @@ import { fileURLToPath } from "url";
 import slugifyString from "@sindresorhus/slugify";
 import dayjs from "dayjs";
 function someFilter(value) {
-  return `filtered value: ${slugifyString(value)}`;
+  return `filtered value: ${slugifyString(value)}---${dayjs(/* @__PURE__ */ new Date()).toISOString()}`;
 }
 
 // index.mts
