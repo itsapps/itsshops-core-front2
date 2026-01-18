@@ -4,17 +4,16 @@ import path from "path";
 import * as fs from "fs";
 var preview2 = async (text) => {
   let result = "bla";
-  const root = process.cwd();
-  const inputDir = path.join(root, "src");
+  const inputDir = "./src";
   console.log("Checking for input directory at:", inputDir);
   if (!fs.existsSync(inputDir)) {
     console.error("INPUT DIRECTORY MISSING!");
   }
-  const absoluteConfigPath = path.join(root, "eleventy.config.mts");
+  const absoluteConfigPath = path.join(inputDir, "eleventy.config.mts");
   console.log("absoluteConfigPath", absoluteConfigPath);
   try {
     const elev = new Eleventy(inputDir, void 0, {
-      configPath: absoluteConfigPath,
+      configPath: "eleventy.config.mts",
       quietMode: true
     });
     const results = await elev.toJSON();

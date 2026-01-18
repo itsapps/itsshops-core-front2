@@ -10,9 +10,9 @@ interface ElevResult {
 
 export const preview2 = async (text: string) => {
   let result = "bla"
-  const root = process.cwd();
-  // const inputDir = "./src";
-  const inputDir = path.join(root, "src");
+  // const root = process.cwd();
+  const inputDir = "./src";
+  // const inputDir = path.join(root, "src");
   console.log("Checking for input directory at:", inputDir);
   if (!fs.existsSync(inputDir)) {
     console.error("INPUT DIRECTORY MISSING!");
@@ -20,11 +20,11 @@ export const preview2 = async (text: string) => {
     // fs.writeFileSync(path.join(inputDir, "index.md"), "# Fallback Content");
     // This helps you see if it's a path issue or a missing file issue
   }
-  const absoluteConfigPath = path.join(root, "eleventy.config.mts");
+  const absoluteConfigPath = path.join(inputDir, "eleventy.config.mts");
   console.log("absoluteConfigPath", absoluteConfigPath);
   try {
     const elev = new Eleventy(inputDir, undefined, {
-      configPath: absoluteConfigPath,
+      configPath: "eleventy.config.mts",
       quietMode: true
     });
 
