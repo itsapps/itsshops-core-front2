@@ -42,6 +42,7 @@
     "tsx": "^4.21.0"
   },
   "devDependencies": {
+    "@types/node": "^25.0.9",
     "@types/nunjucks": "^3.2.6",
     "tsup": "^8.5.1",
     "typescript": "^5.9.3"
