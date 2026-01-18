@@ -2,7 +2,7 @@
 import Eleventy from "@11ty/eleventy";
 import path from "path";
 import * as fs from "fs";
-var preview2 = async (text) => {
+var preview2 = async (request, context) => {
   let result = "bla";
   const inputDir = "./src";
   console.log("Checking for input directory at:", inputDir);

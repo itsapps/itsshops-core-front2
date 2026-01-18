@@ -1,3 +1,4 @@
+import type { Context } from "@netlify/functions";
 // @ts-ignore - Importing Eleventy which might lack types
 import Eleventy from '@11ty/eleventy'
 import path from 'path';
@@ -8,7 +9,7 @@ interface ElevResult {
   content: string;
 }
 
-export const preview2 = async (text: string) => {
+export const preview2 = async (request: Request, context: Context) => {
   let result = "bla"
   // const root = process.cwd();
   const inputDir = "./src";
