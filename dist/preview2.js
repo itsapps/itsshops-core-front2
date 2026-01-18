@@ -12,8 +12,8 @@ var preview2 = async (request, context) => {
   console.log(`coreModulePath at ${coreModulePath} exists?`, fs.existsSync(coreModulePath));
   let result = "Nothing here yet";
   try {
-    const elev = new Eleventy(inputDir, void 0, {
-      configPath,
+    const elev = new Eleventy("src", void 0, {
+      configPath: "eleventy.config.mts",
       quietMode: true
     });
     const results = await elev.toJSON();

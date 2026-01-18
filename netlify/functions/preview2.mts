@@ -23,8 +23,8 @@ export const preview2 = async (request: Request, context: Context) => {
 
   let result = "Nothing here yet"
   try {
-    const elev = new Eleventy(inputDir, undefined, {
-      configPath,
+    const elev = new Eleventy('src', undefined, {
+      configPath: 'eleventy.config.mts',
       quietMode: true
     });
 
