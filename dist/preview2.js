@@ -3,17 +3,17 @@ import Eleventy from "@11ty/eleventy";
 import path from "path";
 import * as fs from "fs";
 var preview2 = async (request, context) => {
-  let result = "bla";
-  const inputDir = "./src";
-  console.log("Checking for input directory at:", inputDir);
-  if (!fs.existsSync(inputDir)) {
-    console.error("INPUT DIRECTORY MISSING!");
-  }
-  const absoluteConfigPath = path.join(inputDir, "eleventy.config.mts");
-  console.log("absoluteConfigPath", absoluteConfigPath);
+  const root = process.cwd();
+  const configPath = path.join(root, "eleventy.config.mts");
+  console.log(`configPath at ${configPath} exists?`, fs.existsSync(configPath));
+  const inputDir = path.join(root, "src");
+  console.log(`inputDir at ${inputDir} exists?`, fs.existsSync(inputDir));
+  const coreModulePath = path.join(root, "node_modules", "@itsapps", "itsshops-core-front2");
+  console.log(`coreModulePath at ${coreModulePath} exists?`, fs.existsSync(coreModulePath));
+  let result = "Nothing here yet";
   try {
     const elev = new Eleventy(inputDir, void 0, {
-      configPath: "eleventy.config.mts",
+      configPath,
       quietMode: true
     });
     const results = await elev.toJSON();

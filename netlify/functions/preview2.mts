@@ -10,22 +10,21 @@ interface ElevResult {
 }
 
 export const preview2 = async (request: Request, context: Context) => {
-  let result = "bla"
-  // const root = process.cwd();
-  const inputDir = "./src";
-  // const inputDir = path.join(root, "src");
-  console.log("Checking for input directory at:", inputDir);
-  if (!fs.existsSync(inputDir)) {
-    console.error("INPUT DIRECTORY MISSING!");
-    // fs.mkdirSync(inputDir, { recursive: true });
-    // fs.writeFileSync(path.join(inputDir, "index.md"), "# Fallback Content");
-    // This helps you see if it's a path issue or a missing file issue
-  }
-  const absoluteConfigPath = path.join(inputDir, "eleventy.config.mts");
-  console.log("absoluteConfigPath", absoluteConfigPath);
+  const root = process.cwd();
+
+  const configPath = path.join(root, "eleventy.config.mts");
+  console.log(`configPath at ${configPath} exists?`, fs.existsSync(configPath));
+  
+  const inputDir = path.join(root, "src");
+  console.log(`inputDir at ${inputDir} exists?`, fs.existsSync(inputDir));
+
+  const coreModulePath = path.join(root, "node_modules", "@itsapps", "itsshops-core-front2");
+  console.log(`coreModulePath at ${coreModulePath} exists?`, fs.existsSync(coreModulePath));
+
+  let result = "Nothing here yet"
   try {
     const elev = new Eleventy(inputDir, undefined, {
-      configPath: "eleventy.config.mts",
+      configPath,
       quietMode: true
     });
 
