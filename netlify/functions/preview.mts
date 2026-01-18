@@ -1,7 +1,7 @@
 import type { Context, Config } from "@netlify/functions";
 // @ts-ignore - Importing Eleventy which might lack types
 import Eleventy from '@11ty/eleventy'
-import { pathToFileURL } from 'url';
+// import { pathToFileURL } from 'url';
 import path from 'path';
 import * as fs from 'fs';
 
