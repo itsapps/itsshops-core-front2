@@ -9,7 +9,10 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
-    "./functions/*": "./netlify/functions/*.mts"
+    "./functions/preview2": {
+      "types": "./dist/preview2.d.ts",
+      "import": "./dist/preview2.js"
+    }
   },
   "files": [
     "dist",
@@ -23,7 +26,7 @@
     "itsshops": "./bin/itsshops.js"
   },
   "scripts": {
-    "build": "tsup index.mts --format esm --dts --clean --target node20",
+    "build": "tsup",
     "buildfsdf": "tsup index.mts --format esm --dts --clean --no-external",
     "blabal": "tsup index.mts --format esm --dts --clean"
   },
