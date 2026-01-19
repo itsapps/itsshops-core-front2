@@ -19,7 +19,8 @@ var getPackageRoot = () => {
 var coreRoot = getPackageRoot();
 var templatesRoot = path.join(coreRoot, "templates");
 var layoutsDir = path.join(templatesRoot, "layouts");
-var shopCoreFrontendPlugin = (eleventyConfig, options = {}) => {
+var shopCoreFrontendPlugin = (eleventyConfig, options) => {
+  console.log("baseConfig: ", options.baseConfig);
   let nunjucksEnvironment = new Nunjucks.Environment(
     new Nunjucks.FileSystemLoader([
       path.resolve("src/_includes"),

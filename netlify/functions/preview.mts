@@ -9,7 +9,15 @@ interface ElevResult {
   content: string;
 }
 
-export const preview = async (request: Request, context: Context) => {
+export type PreviewParams = {
+  request: Request;
+  context: Context;
+  projectConfig: any
+}
+
+export const preview = async (props: PreviewParams) => {
+  console.log("projectConfig: ", props.projectConfig);
+  console.log("ienv tvat: ", props.projectConfig.sanity.getProjectId());
   // try {
   //   const root = process.cwd();
   //   const srcPath = path.join(root, "src");
@@ -28,7 +36,7 @@ export const preview = async (request: Request, context: Context) => {
   // const coreModulePath = path.join(root, "node_modules", "@itsapps", "itsshops-core-front2");
   // console.log(`coreModulePath at ${coreModulePath} exists?`, fs.existsSync(coreModulePath));
 
-  let result = "Nothing here yet"
+  let result = "Nothing here yet blablabla"
   try {
     const elev = new Eleventy('src', undefined, {
       configPath: 'eleventy.config.mts',

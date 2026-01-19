@@ -21,6 +21,7 @@ program
   .option('-e, --env <path>', 'Path to environment file', '.env')
   .option('--no-serve', 'Do not start the local server')
   .option('--watch', 'Do not watch for file changes')
+  .option('--clean', 'Delete the dist folder before building')
   .action((options) => {
     const projectRoot = process.cwd();
     const envPath = path.resolve(projectRoot, options.env);
@@ -51,6 +52,26 @@ program
     // 3. Add 11ty specific flags
     if (options.serve) nodeArgs.push('--serve');
     if (options.watch) nodeArgs.push('--watch');
+
+    // clean if desired
+    if (options.clean) {
+      const foldersToClean = [
+        'dist',
+        'src/_includes/css',
+        'src/_includes/scripts',
+        '.netlify'
+      ];
+
+      foldersToClean.forEach(folder => {
+        const fullPath = path.join(process.cwd(), folder);
+        
+        // fs.rmSync with recursive + force is the native 'rimraf'
+        if (fs.existsSync(fullPath)) {
+          fs.rmSync(fullPath, { recursive: true, force: true });
+          console.log(`  ✔ Removed ${folder}`);
+        }
+      });
+    }
 
     console.log(`🛠️  Running: node ${nodeArgs.join(' ')}\n`);
 

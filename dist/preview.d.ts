@@ -1,5 +1,10 @@
 import { Context } from '@netlify/functions';
 
-declare const preview: (request: Request, context: Context) => Promise<Response>;
+type PreviewParams = {
+    request: Request;
+    context: Context;
+    projectConfig: any;
+};
+declare const preview: (props: PreviewParams) => Promise<Response>;
 
-export { preview };
+export { type PreviewParams, preview };

@@ -1,7 +1,9 @@
 // netlify/functions/preview.mts
 import Eleventy from "@11ty/eleventy";
-var preview = async (request, context) => {
-  let result = "Nothing here yet";
+var preview = async (props) => {
+  console.log("projectConfig: ", props.projectConfig);
+  console.log("ienv tvat: ", props.projectConfig.sanity.getProjectId());
+  let result = "Nothing here yet blablabla";
   try {
     const elev = new Eleventy("src", void 0, {
       configPath: "eleventy.config.mts",

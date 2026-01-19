@@ -30,9 +30,8 @@ const coreRoot = getPackageRoot()
 const templatesRoot = path.join(coreRoot, "templates")
 const layoutsDir = path.join(templatesRoot, "layouts")
 
-export const shopCoreFrontendPlugin = (eleventyConfig: any, options = {
-  
-}) => {
+export const shopCoreFrontendPlugin = (eleventyConfig: any, options: any) => {
+  console.log("baseConfig: ", options.baseConfig)
   /*
    * Nunjucks - templates overrides
    */
