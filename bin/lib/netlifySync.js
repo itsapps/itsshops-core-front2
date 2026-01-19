@@ -53,7 +53,7 @@ export async function syncNetlifyConfig() {
       functions: {
         preview: {
           node_bundler: "esbuild",
-          external_node_modules: Array.from(externalModules),
+          // external_node_modules: Array.from(externalModules),
           included_files: Array.from(includedFiles)
         }
       }
