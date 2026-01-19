@@ -50,13 +50,13 @@ export async function syncNetlifyConfig() {
       dev: {
         autoLaunch: false,
       },
-      // functions: {
-      //   preview: {
-      //     node_bundler: "esbuild",
-      //     external_node_modules: Array.from(externalModules),
-      //     included_files: Array.from(includedFiles)
-      //   }
-      // }
+      functions: {
+        preview: {
+          node_bundler: "esbuild",
+          external_node_modules: Array.from(externalModules),
+          included_files: Array.from(includedFiles)
+        }
+      }
     };
     return TOML.stringify(configObject);
 //     const baseToml = TOML.stringify(configObject);
