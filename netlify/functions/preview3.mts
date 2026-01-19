@@ -1,29 +1,29 @@
 import type { Context } from "@netlify/functions";
 // @ts-ignore - Importing Eleventy which might lack types
 import Eleventy from '@11ty/eleventy'
-// import path from 'path';
-// import * as fs from 'fs';
+import path from 'path';
+import * as fs from 'fs';
 
 interface ElevResult {
   inputPath: string;
   content: string;
 }
 
-export const preview2 = async (request: Request, context: Context) => {
-  // try {
-  //   const root = process.cwd();
-  //   const srcPath = path.join(root, "src");
-  //   if (!fs.existsSync(srcPath)) {
-  //     throw new Error(`CORE: srcPath at ${srcPath} does not exist!`);
-  //   }
+export const preview3 = async (request: Request, context: Context) => {
+  try {
+    const root = process.cwd();
+    const srcPath = path.join(root, "src");
+    if (!fs.existsSync(srcPath)) {
+      throw new Error(`CORE: srcPath at ${srcPath} does not exist!`);
+    }
 
-  //   const configPath = path.join(root, "eleventy.config.mts");
-  //   const configExists = fs.existsSync(configPath);
-  //   console.log(`CORE: configPath at ${configPath} exists?`, configExists);
+    const configPath = path.join(root, "eleventy.config.mts");
+    const configExists = fs.existsSync(configPath);
+    console.log(`CORE: configPath at ${configPath} exists?`, configExists);
 
-  // } catch (err) {
-  //   return new Response(`CORE: ${err}`, { status: 500 });
-  // }
+  } catch (err) {
+    return new Response(`CORE: ${err}`, { status: 500 });
+  }
   
   // const coreModulePath = path.join(root, "node_modules", "@itsapps", "itsshops-core-front2");
   // console.log(`coreModulePath at ${coreModulePath} exists?`, fs.existsSync(coreModulePath));
