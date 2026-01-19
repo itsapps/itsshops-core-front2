@@ -1,6 +1,5 @@
-import { Context, Config } from '@netlify/functions';
+import { Context } from '@netlify/functions';
 
-declare const config: Config;
-declare function export_default(request: Request, context: Context): Promise<Response>;
+declare const preview: (request: Request, context: Context) => Promise<Response>;
 
-export { config, export_default as default };
+export { preview };

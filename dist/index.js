@@ -84,6 +84,30 @@ var shopCoreFrontendPlugin = (eleventyConfig, options = {}) => {
       }
     }
   }
+  const coreMiscPagesRoot = path.join(templatesRoot, "misc");
+  const walkAndAdd = (currentDirPath, relativePath = "") => {
+    const entries = fs.readdirSync(currentDirPath, { withFileTypes: true });
+    for (const entry of entries) {
+      const entryPath = path.join(currentDirPath, entry.name);
+      const entryRelativePath = path.join(relativePath, entry.name);
+      if (entry.isDirectory()) {
+        walkAndAdd(entryPath, entryRelativePath);
+      } else if (entry.isFile() && entry.name.endsWith(".njk")) {
+        const customerPath = path.join(customerPagesRoot, entryRelativePath);
+        if (!fs.existsSync(customerPath)) {
+          eleventyConfig.addTemplate(
+            path.join("misc", entryRelativePath),
+            fs.readFileSync(entryPath, "utf8")
+          );
+        } else {
+          throw new Error(`Conflict detected: You are not allowed to override the core template at: ${customerPath}`);
+        }
+      }
+    }
+  };
+  if (fs.existsSync(coreMiscPagesRoot)) {
+    walkAndAdd(coreMiscPagesRoot);
+  }
   eleventyConfig.addFilter("someFilter", someFilter);
 };
 function shouldIgnoreTemplate({

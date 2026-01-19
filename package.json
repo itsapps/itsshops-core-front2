@@ -12,14 +12,6 @@
     "./functions/preview": {
       "types": "./dist/preview.d.ts",
       "import": "./dist/preview.js"
-    },
-    "./functions/preview2": {
-      "types": "./dist/preview2.d.ts",
-      "import": "./dist/preview2.js"
-    },
-    "./functions/preview3": {
-      "types": "./dist/preview3.d.ts",
-      "import": "./dist/preview3.js"
     }
   },
   "files": [

@@ -123,6 +123,41 @@ export const shopCoreFrontendPlugin = (eleventyConfig: any, options = {
     }
   }
 
+  // misc templates
+  const coreMiscPagesRoot = path.join(templatesRoot, 'misc');
+  const walkAndAdd = (currentDirPath: string, relativePath = "") => {
+    const entries = fs.readdirSync(currentDirPath, { withFileTypes: true });
+
+    for (const entry of entries) {
+      const entryPath = path.join(currentDirPath, entry.name);
+      const entryRelativePath = path.join(relativePath, entry.name);
+
+      if (entry.isDirectory()) {
+        // Recursive call for subfolders
+        walkAndAdd(entryPath, entryRelativePath);
+      } else if (entry.isFile() && entry.name.endsWith('.njk')) {
+        // Logic for .njk files
+        const customerPath = path.join(customerPagesRoot, entryRelativePath);
+
+        if (!fs.existsSync(customerPath)) {
+          // Register the virtual template. 
+          // We use entryRelativePath to maintain the folder structure in the URL (e.g., misc/sub/page.njk)
+          eleventyConfig.addTemplate(
+            path.join('misc', entryRelativePath), 
+            fs.readFileSync(entryPath, 'utf8')
+          );
+        } else {
+          throw new Error(`Conflict detected: You are not allowed to override the core template at: ${customerPath}`);
+        }
+      }
+    }
+  };
+
+  // Start the process
+  if (fs.existsSync(coreMiscPagesRoot)) {
+    walkAndAdd(coreMiscPagesRoot);
+  }
+
   eleventyConfig.addFilter("someFilter", someFilter);
 }
 
