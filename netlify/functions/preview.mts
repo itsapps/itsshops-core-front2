@@ -17,7 +17,6 @@ export type PreviewParams = {
 
 export const preview = async (props: PreviewParams) => {
   console.log("projectConfig: ", props.projectConfig);
-  console.log("ienv tvat: ", props.projectConfig.sanity.getProjectId());
   // try {
   //   const root = process.cwd();
   //   const srcPath = path.join(root, "src");
