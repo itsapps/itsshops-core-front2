@@ -3,7 +3,7 @@ import { Command } from 'commander';
 import { spawn } from 'child_process';
 import path from 'path';
 import fs from 'fs';
-import { syncNetlifyConfig } from './lib/netlifySync.js';
+// import { syncNetlifyConfig } from './lib/netlifySync.js';
 
 const program = new Command();
 
@@ -13,20 +13,16 @@ program
   .version('1.0.0');
 
 program
-  .command('serve')
-  .description('🚀 Start the development server')
-  .hook('preAction', async () => {
-    await syncNetlifyConfig();
-  })
+  .command('eleventy')
+  .description('🚀 Run eleventy')
+  // .hook('preAction', async () => {
+  //   await syncNetlifyConfig({dev: true});
+  // })
   .option('-e, --env <path>', 'Path to environment file', '.env')
-  .option('--no-serve', 'Do not start the local server')
-  .option('--watch', 'Do not watch for file changes')
-  .option('--clean', 'Delete the dist folder before building')
+  .option('--serve', 'Start the local server')
+  .option('--watch', 'Watch for file changes')
   .action((options) => {
-    const projectRoot = process.cwd();
-    const envPath = path.resolve(projectRoot, options.env);
-    
-    console.log(`\n📦 ITS SHOPS | Starting development mode...\n`);
+    console.log(`\n📦 ITSSHOPS | Run eleventy...\n`);
 
     // 1. Prepare Base Arguments for Node
     const nodeArgs = [
@@ -34,9 +30,10 @@ program
       "./node_modules/@11ty/eleventy/cmd.cjs",
       "--config=eleventy.config.mts"
     ];
-    //"build": "tsx ./node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.mts",
 
     // 2. Handle Env File Logic
+    const root = process.cwd();
+    const envPath = path.resolve(root, options.env);
     if (fs.existsSync(envPath)) {
       nodeArgs.unshift(`--env-file=${envPath}`);
       console.log(`✅ Env loaded: ${options.env}`);
@@ -53,25 +50,8 @@ program
     if (options.serve) nodeArgs.push('--serve');
     if (options.watch) nodeArgs.push('--watch');
 
-    // clean if desired
-    if (options.clean) {
-      const foldersToClean = [
-        'dist',
-        'src/_includes/css',
-        'src/_includes/scripts',
-        '.netlify'
-      ];
-
-      foldersToClean.forEach(folder => {
-        const fullPath = path.join(process.cwd(), folder);
-        
-        // fs.rmSync with recursive + force is the native 'rimraf'
-        if (fs.existsSync(fullPath)) {
-          fs.rmSync(fullPath, { recursive: true, force: true });
-          console.log(`  ✔ Removed ${folder}`);
-        }
-      });
-    }
+    // debugging attach
+    // nodeArgs.unshift("--inspect-brk=9229");
 
     console.log(`🛠️  Running: node ${nodeArgs.join(' ')}\n`);
 
@@ -79,63 +59,63 @@ program
     const child = spawn('node', nodeArgs, { 
       stdio: 'inherit', 
       shell: true,
-      cwd: projectRoot 
+      cwd: root 
     });
 
     child.on('close', (code) => {
-      if (code !== 0) {
-        console.log(`\n⚠️  Process exited with code ${code}`);
+      if (code === 0) {
+        console.log(`\n✨ Eleventy completed successfully!`);
+      } else {
+        console.log(`\n⚠️ Build failed with code ${code}`);
+        process.exit(code);
       }
     });
   });
 
 program
-  .command('build')
-  .hook('preAction', async () => {
-    await syncNetlifyConfig();
-  })
-  .description('🏗️  Build the static site for production')
-  .option('-e, --env <path>', 'Path to environment file')
-  .action((options) => {
-    console.log(`\n📦 ITS SHOPS | Building for production...\n`);
+  .command('netlify')
+  .description('🚀 Start netlify dev')
+  // .hook('preAction', async () => {
+  //   await syncNetlifyConfig({dev: true});
+  // })
+  .action(() => {
+    console.log(`\n📦 ITSSHOPS | Starting netlify functions...\n`);
 
-    const nodeArgs = [
-      "--import", "tsx",
-      "./node_modules/@11ty/eleventy/cmd.cjs",
-      "--config=eleventy.config.mts"
-    ];
+    // 2. Handle Env File Logic
+    const root = process.cwd();
+    console.log(`🛠️  Running: netlify dev\n`);
 
-    const envFile = options.env || '.env';
-    const projectRoot = process.cwd();
-    const envPath = path.resolve(projectRoot, envFile);
-
-    if (fs.existsSync(envPath)) {
-      nodeArgs.unshift(`--env-file=${envPath}`);
-      console.log(`✅ Env file detected: ${envFile}`);
-    } else {
-      // If they EXPLICITLY passed a flag that doesn't exist, we should still error
-      if (options.env) {
-        console.error(`❌ Error: Specified env file not found at ${envPath}`);
-        process.exit(1);
-      }
-      // On Netlify, it hits this line and just continues normally. Perfect.
-      console.log(`ℹ️  No .env file found. Using system environment variables.`);
-    }
-
-    console.log(`🚀 Running build command...\n`);
-
-    const child = spawn('node', nodeArgs, { 
+    const child = spawn('netlify', ['dev'], { 
       stdio: 'inherit', 
       shell: true,
-      cwd: projectRoot 
+      cwd: root,
     });
 
-    child.on('close', (code) => {
-      if (code === 0) {
-        console.log(`\n✨ Build completed successfully!`);
-      } else {
-        console.log(`\n⚠️  Build failed with code ${code}`);
-        process.exit(code); // Ensure CI/CD (Netlify) knows the build failed
+    child.on('error', (err) => {
+      console.error('❌ Failed to start Netlify. Is it installed globally?');
+      console.error(err);
+    });
+  });
+
+program
+  .command('clean')
+  .description('🚀 Clean files and folders')
+  .action((options) => {
+    console.log(`\n📦 ITSSHOPS | clean files...\n`);
+
+    const foldersToClean = [
+      'dist',
+      'src/_includes/css',
+      'src/_includes/scripts',
+    ];
+
+    foldersToClean.forEach(folder => {
+      const fullPath = path.join(root, folder);
+      
+      // fs.rmSync with recursive + force is the native 'rimraf'
+      if (fs.existsSync(fullPath)) {
+        fs.rmSync(fullPath, { recursive: true, force: true });
+        console.log(`  ✔ Removed ${folder}`);
       }
     });
   });
