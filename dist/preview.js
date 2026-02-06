@@ -1,11 +1,11 @@
-// netlify/functions/preview.mts
+// netlify/functions/preview.ts
 import Eleventy from "@11ty/eleventy";
 var preview = async (props) => {
   console.log("projectConfig: ", props.projectConfig);
   let result = "Nothing here yet blablabla";
   try {
     const elev = new Eleventy("src", void 0, {
-      configPath: "eleventy.config.mts",
+      configPath: "eleventy.config.ts",
       quietMode: true
     });
     const results = await elev.toJSON();

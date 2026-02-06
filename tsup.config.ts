@@ -2,8 +2,8 @@ import { defineConfig } from 'tsup';
 
 export default defineConfig({
   entry: {
-    index: 'index.mts',
-    preview: 'netlify/functions/preview.mts',
+    index: 'index.ts',
+    preview: 'netlify/functions/preview.ts',
   },
   format: ['esm'],
   dts: true,        // Generates .d.ts files

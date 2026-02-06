@@ -13,5 +13,5 @@
     "skipLibCheck": true,
     "outDir": "dist"
   },
-  "include": ["index.mts", "netlify/functions/**/*.mts"]
+  "include": ["index.ts", "netlify/functions/**/*.ts"]
 }

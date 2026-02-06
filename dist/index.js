@@ -1,16 +1,16 @@
-// index.mts
+// index.ts
 import * as fs from "fs";
 import * as path from "path";
 import Nunjucks from "nunjucks";
 import { fileURLToPath } from "url";
 
-// config/filters.mts
+// config/filters.ts
 import slugifyString from "@sindresorhus/slugify";
 function someFilter(value) {
   return `filtered value: ${slugifyString(value)}`;
 }
 
-// index.mts
+// index.ts
 var __filename = fileURLToPath(import.meta.url);
 var __dirname = path.dirname(__filename);
 var getPackageRoot = () => {

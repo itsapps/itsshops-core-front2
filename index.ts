@@ -12,7 +12,7 @@ import { fileURLToPath } from "url"
 //   EleventyRenderPlugin,
 //   EleventyI18nPlugin,
 // } from '@11ty/eleventy';
-import { someFilter } from './config/filters.mts';
+import { someFilter } from './config/filters';
 
 // Convert current module URL to a directory path
 const __filename = fileURLToPath(import.meta.url)
