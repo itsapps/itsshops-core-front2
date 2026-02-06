@@ -38,7 +38,7 @@ export const preview = async (props: PreviewParams) => {
   let result = "Nothing here yet blablabla"
   try {
     const elev = new Eleventy('src', undefined, {
-      configPath: 'eleventy.config.ts',
+      configPath: 'eleventy.config.mts',
       quietMode: true
     });
 

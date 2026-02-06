@@ -5,7 +5,7 @@ var preview = async (props) => {
   let result = "Nothing here yet blablabla";
   try {
     const elev = new Eleventy("src", void 0, {
-      configPath: "eleventy.config.ts",
+      configPath: "eleventy.config.mts",
       quietMode: true
     });
     const results = await elev.toJSON();
