@@ -28,7 +28,7 @@ program
     const nodeArgs = [
       "--import", "tsx",
       "./node_modules/@11ty/eleventy/cmd.cjs",
-      "--config=eleventy.config.mts"
+      "--config=eleventy.config.ts"
     ];
 
     // 2. Handle Env File Logic
